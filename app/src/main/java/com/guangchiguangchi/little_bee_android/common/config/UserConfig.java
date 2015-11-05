@@ -11,4 +11,10 @@ public class UserConfig {
      */
     public static String USER_ID;
 
+
+    /**
+     * 用户名
+     */
+    public static String USER_NAME;
+
 }

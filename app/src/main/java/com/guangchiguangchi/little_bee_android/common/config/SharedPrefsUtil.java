@@ -38,13 +38,15 @@ public class SharedPrefsUtil {
     /**
      * 设置已经登陆
      *
-     * @param context   上下文
+     * @param context 上下文
      */
-    public static void putDingDianTuiSong(Context context) {
+    public static void putUserInfo(Context context) {
 
         Editor sp = context.getSharedPreferences(CONFIG_FILE, Context.MODE_PRIVATE)
                 .edit();
         sp.putBoolean(IS_LOGIN, true);
+        sp.putString(USER_ID, UserConfig.USER_ID);
+        sp.putString(USER_NAME, UserConfig.USER_NAME);
         sp.apply();
 
     }
@@ -52,14 +54,15 @@ public class SharedPrefsUtil {
     /**
      * 判断是否登陆
      *
-     * @param context   上下文
+     * @param context 上下文
      * @return 是否已经登陆
      */
-    public static boolean isAutoLoadInfo(Context context ) {
+    public static boolean isUserInfo(Context context) {
 
         SharedPreferences sp = context.getSharedPreferences(CONFIG_FILE,
                 Context.MODE_PRIVATE);
         UserConfig.USER_ID = sp.getString(USER_ID, "");
+        UserConfig.USER_NAME = sp.getString(USER_NAME, "未登录");
         return sp.getBoolean(IS_LOGIN, false);
 
     }
@@ -67,9 +70,9 @@ public class SharedPrefsUtil {
     /**
      * 保存用户名和密码
      *
-     * @param context   上下文
-     * @param username  用户名
-     * @param userpsw   用户密码
+     * @param context  上下文
+     * @param username 用户名
+     * @param userpsw  用户密码
      */
     public static void putUserInfo(Context context, String username, String userpsw) {
 
@@ -85,7 +88,7 @@ public class SharedPrefsUtil {
      * 获取用户信息
      * 手机号和密码
      *
-     * @param context   上下文
+     * @param context 上下文
      * @return 用户对象
      */
     public static UserModel getUserInfo(Context context) {
@@ -95,13 +98,9 @@ public class SharedPrefsUtil {
         UserModel me = new UserModel();
         me.setUsername(sp.getString(USER_NAME, ""));
         me.setPassword(sp.getString(USER_PSW, ""));
-        me.setUserid(sp.getString(USER_ID,""));
+        me.setUserid(sp.getString(USER_ID, ""));
         return me;
 
     }
-
-
-
-
 
 }

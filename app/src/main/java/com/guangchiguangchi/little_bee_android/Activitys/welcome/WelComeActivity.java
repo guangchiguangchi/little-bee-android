@@ -9,6 +9,7 @@ import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.main.MainActivity;
 import com.guangchiguangchi.little_bee_android.activitys.usermanage.LoginActivity;
 import com.guangchiguangchi.little_bee_android.common.config.SharedPrefsUtil;
+import com.guangchiguangchi.little_bee_android.common.utils.ActivityAnim;
 
 
 /**
@@ -24,7 +25,7 @@ public class WelComeActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        islogin = SharedPrefsUtil.isAutoLoadInfo(this);
+        islogin = SharedPrefsUtil.isUserInfo(this);
         UiHandler.postDelayed(runnable,2000);
     }
 
@@ -34,12 +35,11 @@ public class WelComeActivity extends Activity{
         public void run() {
             Intent intent = new Intent();
             if (islogin){
-                intent.setClass(WelComeActivity.this.getApplicationContext(), MainActivity.class);
+                ActivityAnim.intentActivity(WelComeActivity.this, MainActivity.class, null);
             }
             else{
-                intent.setClass(WelComeActivity.this.getApplicationContext(), LoginActivity.class);
+                ActivityAnim.intentActivity(WelComeActivity.this, LoginActivity.class, null);
             }
-            startActivity(intent);
             finish();
         }
     };
