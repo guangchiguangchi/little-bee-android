@@ -55,7 +55,7 @@ public class SharedPrefsUtil {
      * @param context   上下文
      * @return 是否已经登陆
      */
-    public static boolean getAutoLoadInfo(Context context ) {
+    public static boolean isAutoLoadInfo(Context context ) {
 
         SharedPreferences sp = context.getSharedPreferences(CONFIG_FILE,
                 Context.MODE_PRIVATE);

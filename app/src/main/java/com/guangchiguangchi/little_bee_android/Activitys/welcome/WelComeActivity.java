@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.guangchiguangchi.little_bee_android.R;
+import com.guangchiguangchi.little_bee_android.activitys.main.MainActivity;
 import com.guangchiguangchi.little_bee_android.activitys.usermanage.LoginActivity;
+import com.guangchiguangchi.little_bee_android.common.config.SharedPrefsUtil;
 
 
 /**
@@ -16,19 +18,27 @@ import com.guangchiguangchi.little_bee_android.activitys.usermanage.LoginActivit
 public class WelComeActivity extends Activity{
     private Handler UiHandler = new Handler();
 
+    private boolean islogin = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        islogin = SharedPrefsUtil.isAutoLoadInfo(this);
         UiHandler.postDelayed(runnable,2000);
     }
+
 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-
             Intent intent = new Intent();
-            intent.setClass(WelComeActivity.this.getApplicationContext(), LoginActivity.class);
+            if (islogin){
+                intent.setClass(WelComeActivity.this.getApplicationContext(), MainActivity.class);
+            }
+            else{
+                intent.setClass(WelComeActivity.this.getApplicationContext(), LoginActivity.class);
+            }
             startActivity(intent);
             finish();
         }
