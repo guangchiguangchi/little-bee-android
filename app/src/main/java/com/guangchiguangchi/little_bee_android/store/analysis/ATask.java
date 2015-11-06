@@ -41,11 +41,11 @@ public class ATask extends ABase{
             for (int i =0 ; i<arraySize ; i++){
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("id","任务编号:"+jsonArray.getJSONObject(i).getString("id"));
-                map.put("title","任务标题:"+jsonArray.getJSONObject(i).getString("title"));
+                map.put("id","编号:"+jsonArray.getJSONObject(i).getString("id"));
+                map.put("title","任务标题:\n   "+jsonArray.getJSONObject(i).getString("title"));
                 map.put("projectname","项目:"+jsonArray.getJSONObject(i).getString("projectname"));
-                map.put("spendtime","工时:"+jsonArray.getJSONObject(i).getString("spendtime"));
-                map.put("content","内容:"+jsonArray.getJSONObject(i).getString("content"));
+                map.put("spendtime","工时:"+jsonArray.getJSONObject(i).getString("spendtime")+"小时");
+                map.put("content","内容:\n   "+jsonArray.getJSONObject(i).getString("content"));
                 list.add(map);
             }
 
