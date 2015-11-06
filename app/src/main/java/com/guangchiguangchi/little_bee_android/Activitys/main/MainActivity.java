@@ -2,6 +2,8 @@ package com.guangchiguangchi.little_bee_android.activitys.main;
 
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActBase {
     private Toolbar toolbar;
     private List<Map<String, Object>> list;
     private Handler uiHandler = new Handler();
+    private LinearLayout lin1;
     private BaseModel baseModel;
     private SimpleAdapter adapter;
     private ATask aTask;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActBase {
         setSupportActionBar(toolbar);
         lsv_tasks = (ListView) findViewById(R.id.lsv_tasks);
         lsv_tasks.setAdapter(adapter);
+        lin1 = (LinearLayout)findViewById(R.id.lin1);
     }
 
     @Override
@@ -76,6 +80,10 @@ public class MainActivity extends AppCompatActBase {
             dismissProgressDialog();
             if (baseModel.isSuccess()) {
                 adapter.notifyDataSetChanged();
+                if (list.size() == 0)
+                    lin1.setVisibility(View.VISIBLE);
+                else
+                    lin1.setVisibility(View.INVISIBLE);
             } else {
                 showMsg(baseModel.getData());
             }
