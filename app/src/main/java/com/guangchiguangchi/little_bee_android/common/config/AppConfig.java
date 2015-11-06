@@ -11,12 +11,12 @@ public class AppConfig {
     /**
      * 服务器IP地址
      */
-    public static String WEB_IP = "192.168.1.106";
+    public static String WEB_IP = "172.16.248.4";
 
     /**
      * java后台ip
      */
-    public static String WEB_PORT = "8080";
+    public static String WEB_PORT = "8000";
 
     /**
      * APP状态 控制system和log的输出 true 为debug模式有打印  false 为上线模式无打印
@@ -28,7 +28,7 @@ public class AppConfig {
      * @return web地址
      */
     public static String WEB_URL() {
-        return "http://" + WEB_IP + ":" + WEB_PORT + "/";
+        return "http://" + WEB_IP + ":" + WEB_PORT + "/little-bee/";
     }
 
 

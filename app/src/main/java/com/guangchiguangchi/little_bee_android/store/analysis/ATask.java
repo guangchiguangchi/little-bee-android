@@ -34,7 +34,7 @@ public class ATask extends ABase{
             if (!bBase.isSuccess()){
                 return bBase;
             }
-            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("creator");
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("assigee");
 
             int arraySize = jsonArray.length();
 
