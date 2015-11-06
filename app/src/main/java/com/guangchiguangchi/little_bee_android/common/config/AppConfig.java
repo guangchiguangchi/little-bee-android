@@ -11,7 +11,7 @@ public class AppConfig {
     /**
      * 服务器IP地址
      */
-    public static String WEB_IP = "192.168.1.102";
+    public static String WEB_IP = "192.168.1.106";
 
     /**
      * java后台ip

@@ -7,8 +7,8 @@ import com.guangchiguangchi.little_bee_android.store.web.WUser;
 import org.json.JSONObject;
 
 /**
- * Created by jiweibo on 15/7/10.
  * 用户   登陆
+ * Created by jiweibo on 15/7/10.
  */
 public class AUser extends ABase{
 
