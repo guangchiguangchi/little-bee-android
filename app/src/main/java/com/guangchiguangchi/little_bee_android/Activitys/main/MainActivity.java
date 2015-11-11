@@ -1,8 +1,11 @@
 package com.guangchiguangchi.little_bee_android.activitys.main;
 
+import android.content.DialogInterface;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -10,6 +13,7 @@ import android.widget.SimpleAdapter;
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.base.AppCompatActBase;
 import com.guangchiguangchi.little_bee_android.common.config.UserConfig;
+import com.guangchiguangchi.little_bee_android.common.utils.AppSystemout;
 import com.guangchiguangchi.little_bee_android.models.BaseModel;
 import com.guangchiguangchi.little_bee_android.store.analysis.ATask;
 
@@ -57,7 +61,31 @@ public class MainActivity extends AppCompatActBase {
 
     @Override
     public void setListener() {
+        lsv_tasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setIcon(R.drawable.ic_bee);
+                builder.setTitle("小蜜蜂");
+                //    指定下拉列表的显示数据
+                final String[] cities  = new String[1];
+
+                cities[0] = "开始任务";
+
+                //    设置一个下拉的列表选择项
+                builder.setItems(cities, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+
+                    }
+                });
+                builder.show();
+
+            }
+        });
     }
 
     @Override

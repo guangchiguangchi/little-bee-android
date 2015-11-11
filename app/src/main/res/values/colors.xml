@@ -13,4 +13,6 @@
     <color name="title_line">#dcdcdc</color>
     <color name="list_item">#c7c7c7</color>
     <color name="btn_menu_item">#dddddd</color>
+    <color name="liv_item_kuang_color_lv">#47ed3e</color>
+    <color name="liv_item_kuang_color_huang">#edcc3e</color>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/x_liv_frame_color"
+        android:background="@drawable/x_liv_frame_color_huang"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="10dp">
