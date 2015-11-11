@@ -8,7 +8,7 @@ import android.os.Handler;
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.main.MainActivity;
 import com.guangchiguangchi.little_bee_android.activitys.usermanage.LoginActivity;
-import com.guangchiguangchi.little_bee_android.common.config.SharedPrefsUtil;
+import com.guangchiguangchi.little_bee_android.common.utils.SharedPrefsUtil;
 import com.guangchiguangchi.little_bee_android.common.utils.ActivityAnim;
 
 
@@ -26,7 +26,7 @@ public class WelComeActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         islogin = SharedPrefsUtil.isUserInfo(this);
-        UiHandler.postDelayed(runnable,2000);
+        UiHandler.post(updata_runnable);
     }
 
 
@@ -41,6 +41,19 @@ public class WelComeActivity extends Activity{
                 ActivityAnim.intentActivity(WelComeActivity.this, LoginActivity.class, null);
             }
             finish();
+        }
+    };
+
+    private Runnable updata_runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            //检查更新的代码
+
+
+
+
+            UiHandler.postDelayed(runnable,1000);
         }
     };
 

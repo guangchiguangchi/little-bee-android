@@ -11,6 +11,9 @@ import java.util.Map;
  */
 public class WUser extends HttpBase{
 
+    /**
+     * 登陆的url
+     */
     private String login_url = "users/login";
 
     /**

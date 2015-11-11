@@ -56,4 +56,105 @@ public class ATask extends ABase{
         return bBase;
     }
 
+
+    /**
+     * 开始任务  #
+     * @param taskId 任务id
+     * @return 修改是否成功
+     */
+    public BaseModel startTask(int taskId) {
+        String data = wTask.wGetTasks();
+        BaseModel bBase = new BaseModel();
+        try {
+            JSONObject jsonObject = isSuccess(data,bBase);
+            if (!bBase.isSuccess()){
+                return bBase;
+            }
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("assigee");
+
+            int arraySize = jsonArray.length();
+
+            for (int i =0 ; i<arraySize ; i++){
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("id","编号:"+jsonArray.getJSONObject(i).getString("id"));
+                map.put("title","任务标题:\n   "+jsonArray.getJSONObject(i).getString("title"));
+                map.put("projectname","项目:"+jsonArray.getJSONObject(i).getString("projectname"));
+                map.put("spendtime","工时:"+jsonArray.getJSONObject(i).getString("spendtime")+"小时");
+                map.put("content", "内容:\n   " + jsonArray.getJSONObject(i).getString("content"));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            setNetJsonError(bBase);
+        }
+        return bBase;
+    }
+    /**
+     * 结束任务  #
+     * @param taskId 任务id
+     * @return 修改是否成功
+     */
+    public BaseModel stopTask(int taskId) {
+        String data = wTask.wGetTasks();
+        BaseModel bBase = new BaseModel();
+        try {
+            JSONObject jsonObject = isSuccess(data,bBase);
+            if (!bBase.isSuccess()){
+                return bBase;
+            }
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("assigee");
+
+            int arraySize = jsonArray.length();
+
+            for (int i =0 ; i<arraySize ; i++){
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("id","编号:"+jsonArray.getJSONObject(i).getString("id"));
+                map.put("title","任务标题:\n   "+jsonArray.getJSONObject(i).getString("title"));
+                map.put("projectname","项目:"+jsonArray.getJSONObject(i).getString("projectname"));
+                map.put("spendtime","工时:"+jsonArray.getJSONObject(i).getString("spendtime")+"小时");
+                map.put("content", "内容:\n   " + jsonArray.getJSONObject(i).getString("content"));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            setNetJsonError(bBase);
+        }
+        return bBase;
+    }
+    /**
+     * 暂停任务  #
+     * @param taskId 任务id
+     * @return 修改是否成功
+     */
+    public BaseModel pauseTask(int taskId) {
+        String data = wTask.wGetTasks();
+        BaseModel bBase = new BaseModel();
+        try {
+            JSONObject jsonObject = isSuccess(data,bBase);
+            if (!bBase.isSuccess()){
+                return bBase;
+            }
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("assigee");
+
+            int arraySize = jsonArray.length();
+
+            for (int i =0 ; i<arraySize ; i++){
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("id","编号:"+jsonArray.getJSONObject(i).getString("id"));
+                map.put("title","任务标题:\n   "+jsonArray.getJSONObject(i).getString("title"));
+                map.put("projectname","项目:"+jsonArray.getJSONObject(i).getString("projectname"));
+                map.put("spendtime","工时:"+jsonArray.getJSONObject(i).getString("spendtime")+"小时");
+                map.put("content", "内容:\n   " + jsonArray.getJSONObject(i).getString("content"));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            setNetJsonError(bBase);
+        }
+        return bBase;
+    }
+
 }

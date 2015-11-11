@@ -12,6 +12,9 @@ import java.util.Map;
  */
 public class WTask extends HttpBase{
 
+    /**
+     * 任务的url地址
+     */
     private String url = "tasks/getTaskList";
 
     /**
@@ -23,4 +26,25 @@ public class WTask extends HttpBase{
         return httpGet(AppConfig.WEB_URL() + url, data);
     }
 
+
+    /**
+     * 开始任务 #
+     */
+    public String wStartTask(int taskId){
+        return "";
+    }
+
+    /**
+     * 结束任务 #
+     */
+    public String wStopTask(){
+        return "";
+    }
+
+    /**
+     * 暂停任务 #
+     */
+    public String wPauseTask(){
+        return "";
+    }
 }

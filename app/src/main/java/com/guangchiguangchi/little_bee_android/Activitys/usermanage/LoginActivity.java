@@ -1,6 +1,5 @@
 package com.guangchiguangchi.little_bee_android.activitys.usermanage;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +8,8 @@ import android.widget.EditText;
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.base.ActBase;
 import com.guangchiguangchi.little_bee_android.activitys.main.MainActivity;
-import com.guangchiguangchi.little_bee_android.common.config.SharedPrefsUtil;
+import com.guangchiguangchi.little_bee_android.common.utils.SharedPrefsUtil;
 import com.guangchiguangchi.little_bee_android.common.utils.ActivityAnim;
-import com.guangchiguangchi.little_bee_android.common.utils.AppSystemout;
 import com.guangchiguangchi.little_bee_android.models.BaseModel;
 import com.guangchiguangchi.little_bee_android.store.analysis.AUser;
 

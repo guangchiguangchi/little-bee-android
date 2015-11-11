@@ -1,9 +1,10 @@
-package com.guangchiguangchi.little_bee_android.common.config;
+package com.guangchiguangchi.little_bee_android.common.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.guangchiguangchi.little_bee_android.common.config.UserConfig;
 import com.guangchiguangchi.little_bee_android.models.UserModel;
 
 /**
