@@ -61,9 +61,11 @@ public class HttpBase {
             }
             url = url.substring(0, url.length() - 1);
             data = HttpRequest.get(url).connectTimeout(3000).body();
+            AppSystemout.println(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return data;
     }
 

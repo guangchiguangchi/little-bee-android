@@ -17,4 +17,13 @@ public class UserConfig {
      */
     public static String USER_NAME;
 
+    /**
+     * 任务ID
+     */
+    public static String TaskId;
+
+    /**
+     * 任务状态
+     */
+    public static String Status;
 }

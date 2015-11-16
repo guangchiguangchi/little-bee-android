@@ -9,6 +9,17 @@ public class AppConfig {
 //--------------空间服务器地址-----------------
 
     /**
+     * 友加  Ip  port
+     */
+    public static String YWEB_IP = "172.16.255.165";
+    public static String YWEB_PORT = "8089";
+
+    /**
+     * 恒铭  Ip  port
+     */
+    public static String ZWEB_IP = "172.16.252.241";
+    public static String ZWEB_PORT = "8080";
+    /**
      * 服务器IP地址
      */
     public static String WEB_IP = "172.16.248.4";
@@ -25,10 +36,11 @@ public class AppConfig {
 
     /**
      * web地址
+     *  + "/little-bee/"
      * @return web地址
      */
     public static String WEB_URL() {
-        return "http://" + WEB_IP + ":" + WEB_PORT + "/little-bee/";
+        return "http://" + ZWEB_IP + ":" + ZWEB_PORT+"/" ;
     }
 
 

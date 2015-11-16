@@ -1,22 +1,30 @@
 package com.guangchiguangchi.little_bee_android.activitys.main;
 
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
 
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.base.AppCompatActBase;
+import com.guangchiguangchi.little_bee_android.common.adapter.TaskAdapter;
 import com.guangchiguangchi.little_bee_android.common.config.UserConfig;
 import com.guangchiguangchi.little_bee_android.common.utils.AppSystemout;
+import com.guangchiguangchi.little_bee_android.common.utils.AppToast;
 import com.guangchiguangchi.little_bee_android.models.BaseModel;
+import com.guangchiguangchi.little_bee_android.models.TaskModel;
 import com.guangchiguangchi.little_bee_android.store.analysis.ATask;
 
 import java.util.ArrayList;
@@ -35,19 +43,17 @@ public class MainActivity extends AppCompatActBase {
     private Handler uiHandler = new Handler();
     private LinearLayout lin1;
     private BaseModel baseModel;
-    private SimpleAdapter adapter;
+    private TaskAdapter adapter;
     private ATask aTask;
+    private TaskModel taskModel;
 
     @Override
     public void init() {
         baseModel = new BaseModel();
         aTask = new ATask();
+        taskModel = new TaskModel();
         list = new ArrayList<Map<String, Object>>();
-        adapter = new SimpleAdapter(MainActivity.this, list,
-                R.layout.liv_task_item,
-                new String[]{"id", "projectname","title","spendtime","content"},
-                new int[]{R.id.lis_item_id, R.id.lis_item_project, R.id.lis_item_title,
-                        R.id.lis_item_spendtime, R.id.lis_item_content});
+
     }
 
     @Override
@@ -57,8 +63,9 @@ public class MainActivity extends AppCompatActBase {
         toolbar.setSubtitle(UserConfig.USER_NAME);
         setSupportActionBar(toolbar);
         lsv_tasks = (ListView) findViewById(R.id.lsv_tasks);
+        adapter = new TaskAdapter(MainActivity.this, list);
         lsv_tasks.setAdapter(adapter);
-        lin1 = (LinearLayout)findViewById(R.id.lin1);
+        lin1 = (LinearLayout) findViewById(R.id.lin1);
     }
 
     @Override
@@ -67,21 +74,37 @@ public class MainActivity extends AppCompatActBase {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                UserConfig.TaskId = list.get(position).get("id").toString();
+                UserConfig.Status = list.get(position).get("status").toString();
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setIcon(R.drawable.ic_bee);
                 builder.setTitle("小蜜蜂");
                 //    指定下拉列表的显示数据
-                final String[] cities  = new String[1];
-
-                cities[0] = "开始任务";
-
+                final String[] cities = new String[]{"任务开始", "任务完成"};
+                String[] citiesparams = new String[]{"任务完成"};
                 //    设置一个下拉的列表选择项
-                builder.setItems(cities, new DialogInterface.OnClickListener()
-                {
+                builder.setItems(cities, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
 
+                            case 0:
+                                if (UserConfig.Status == "0") {
+                                    new StartTaskThread().start();
+                                }else{
+
+                                    AppToast.show_SHORT(MainActivity.this,"");
+                                }
+
+
+                                break;
+
+                            case 1:
+
+                                break;
+
+                        }
                     }
                 });
                 builder.show();
@@ -99,6 +122,7 @@ public class MainActivity extends AppCompatActBase {
     class GetTaskListThread extends Thread {
         @Override
         public void run() {
+
             baseModel = aTask.getTasks(list);
             uiHandler.post(runnable);
         }
@@ -120,30 +144,61 @@ public class MainActivity extends AppCompatActBase {
         }
     };
 
+
+    class StartTaskThread extends Thread {
+
+        @Override
+        public void run() {
+
+            baseModel = aTask.startTask(UserConfig.TaskId, UserConfig.Status);
+            uiHandler.post(run1);
+
+        }
+
+
+    }
+
+    private Runnable run1 = new Runnable() {
+        @Override
+        public void run() {
+            dismissProgressDialog();
+            if (baseModel.isSuccess()) {
+                adapter.notifyDataSetChanged();
+            } else {
+                showMsg(baseModel.getData());
+            }
+        }
+    };
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        SubMenu m = menu.addSubMenu("任务管理");
+        m.add(1, 1, 1, "添加");
+        m.add(1, 2, 1, "修改");
+        m.add(1, 3, 1, "删除");
+        menu.add(2, 4, 2, "我的任务");
+        menu.add(2, 5, 2, "已完成的任务");
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (item.getGroupId() == 1) {
+            switch (item.getItemId()) {
+                case 1:
+                    Toast.makeText(MainActivity.this, "a" +
+                            "dd", Toast.LENGTH_SHORT).show();
+                    break;
+            }
 
-
-            AppSystemout.println("1234234234234234");
-
-
-            return true;
+        } else if (item.getItemId() == 4) {
+            Toast.makeText(MainActivity.this, "add", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == 5) {
+            Toast.makeText(MainActivity.this, "ss", Toast.LENGTH_SHORT).show();
         }
-
         return super.onOptionsItemSelected(item);
     }
 

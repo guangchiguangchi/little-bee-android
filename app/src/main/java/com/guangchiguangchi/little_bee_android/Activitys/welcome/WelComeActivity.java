@@ -51,8 +51,6 @@ public class WelComeActivity extends Activity{
             //检查更新的代码
 
 
-
-
             UiHandler.postDelayed(runnable,1000);
         }
     };

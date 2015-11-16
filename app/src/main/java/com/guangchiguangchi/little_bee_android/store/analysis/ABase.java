@@ -16,7 +16,7 @@ public class ABase {
     /**
      * 判断网络请求
      *
-     * @param data     网络数据
+     * @param data 网络数据
      * @param errorMsg 错误数据对象
      * @return JSONObject 网络数据对象
      * @throws JSONException 解析错误异常

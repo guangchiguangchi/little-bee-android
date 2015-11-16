@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">小蜜蜂</string>
-    <string name="action_settings">查看完成任务</string>
+    <string name="downlist">查看完成任务</string>
+    <string name="mytask">我的任务</string>
 </resources>
