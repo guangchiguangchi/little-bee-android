@@ -1,10 +1,6 @@
 package com.guangchiguangchi.little_bee_android.activitys.main;
-
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,13 +11,10 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
-
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.base.AppCompatActBase;
 import com.guangchiguangchi.little_bee_android.common.adapter.TaskAdapter;
 import com.guangchiguangchi.little_bee_android.common.config.UserConfig;
-import com.guangchiguangchi.little_bee_android.common.utils.AppSystemout;
 import com.guangchiguangchi.little_bee_android.common.utils.AppToast;
 import com.guangchiguangchi.little_bee_android.models.BaseModel;
 import com.guangchiguangchi.little_bee_android.models.TaskModel;
@@ -94,7 +87,7 @@ public class MainActivity extends AppCompatActBase {
                                     new StartTaskThread().start();
                                 }else{
 
-                                    AppToast.show_SHORT(MainActivity.this,"");
+                                    AppToast.show_SHORT(MainActivity.this,"任务已开始");
                                 }
 
 
