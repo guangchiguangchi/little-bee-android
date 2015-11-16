@@ -29,7 +29,7 @@ public class TaskAdapter extends BaseAdapter {
     private TaskModel tskmo;
 
     public TaskAdapter(Context context, List<Map<String, Object>> data) {
-        tskmo=new  TaskModel();
+        tskmo = new TaskModel();
         this.mContext = context;
         this.mdata = data;
 
@@ -99,9 +99,7 @@ public class TaskAdapter extends BaseAdapter {
         viewHolder.work_content.setText("内容:\n   " + mdata.get(position).get("content").toString());
 
 
-       if (mdata.get(position).get("status").toString().equals("0")) {
-           viewHolder.linearlayout.setBackgroundResource(R.drawable.x_liv_frame_color_red);
-        } else if (mdata.get(position).get("status").toString().equals("1")) {
+        if (mdata.get(position).get("status").toString().equals("1")) {
             viewHolder.linearlayout.setBackgroundResource(R.drawable.x_liv_frame_color_huang);
         } else if (mdata.get(position).get("status").toString().equals("2")) {
             viewHolder.linearlayout.setBackgroundResource(R.drawable.x_liv_frame_color_lv);

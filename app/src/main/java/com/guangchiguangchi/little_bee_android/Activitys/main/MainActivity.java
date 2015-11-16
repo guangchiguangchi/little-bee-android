@@ -1,4 +1,5 @@
 package com.guangchiguangchi.little_bee_android.activitys.main;
+
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.guangchiguangchi.little_bee_android.R;
 import com.guangchiguangchi.little_bee_android.activitys.base.AppCompatActBase;
 import com.guangchiguangchi.little_bee_android.common.adapter.TaskAdapter;
@@ -83,11 +85,11 @@ public class MainActivity extends AppCompatActBase {
                         switch (which) {
 
                             case 0:
-                                if (UserConfig.Status == "0") {
+                                if (UserConfig.Status == "1") {
                                     new StartTaskThread().start();
-                                }else{
+                                } else {
 
-                                    AppToast.show_SHORT(MainActivity.this,"任务已开始");
+                                    AppToast.show_SHORT(MainActivity.this, "任务已开始");
                                 }
 
 
@@ -166,10 +168,6 @@ public class MainActivity extends AppCompatActBase {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        SubMenu m = menu.addSubMenu("任务管理");
-        m.add(1, 1, 1, "添加");
-        m.add(1, 2, 1, "修改");
-        m.add(1, 3, 1, "删除");
         menu.add(2, 4, 2, "我的任务");
         menu.add(2, 5, 2, "已完成的任务");
 
@@ -179,18 +177,10 @@ public class MainActivity extends AppCompatActBase {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getGroupId() == 1) {
-            switch (item.getItemId()) {
-                case 1:
-                    Toast.makeText(MainActivity.this, "a" +
-                            "dd", Toast.LENGTH_SHORT).show();
-                    break;
-            }
+        if (item.getItemId() == 4) {
 
-        } else if (item.getItemId() == 4) {
-            Toast.makeText(MainActivity.this, "add", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == 5) {
-            Toast.makeText(MainActivity.this, "ss", Toast.LENGTH_SHORT).show();
+
         }
         return super.onOptionsItemSelected(item);
     }
